@@ -1,0 +1,23 @@
+---
+title: "Tax Forecast Model"
+author: "David T. Flynn, PhD"
+date: "2026-03-22"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Library and Data Loading
+
+Basic libraries for analysis. 
+
+```{r libraries}
+library(tidyverse)
+library(fpp3)
+library(dplyr)
+library(urca)
+```
+
+Start with the MW CPI data and the oil data.
