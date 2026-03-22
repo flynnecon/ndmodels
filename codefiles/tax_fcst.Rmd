@@ -20,4 +20,4 @@ library(dplyr)
 library(urca)
 ```
 
-Start with the MW CPI data and the oil data.
+Start with the MW CPI data and the tax data.
