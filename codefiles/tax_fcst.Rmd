@@ -28,5 +28,6 @@ tax_data <- read.csv("https://raw.githubusercontent.com/flynnecon/ndmodels/refs/
 cpi_data <- read.csv("https://raw.githubusercontent.com/flynnecon/ndmodels/refs/heads/main/rawdata/cpimw.csv")
 tax_ts <- tax_data |> mutate(date=mdy(date)) |> mutate(date = yearmonth(date)) |> as_tsibble(index=date)
 cpi_ts <- cpi_data |> mutate(date=mdy(date)) |> mutate(date = yearmonth(date)) |> as_tsibble(index=date)
+taxcpi_ts <- inner_join(tax_ts,cpi_ts,by=c("date"))
 ```
 
