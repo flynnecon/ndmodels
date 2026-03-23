@@ -18,6 +18,8 @@ library(tidyverse)
 library(fpp3)
 library(dplyr)
 library(urca)
+library(feasts)
+library(seasonal)
 ```
 
 Start with the MW CPI data and the tax data. There will need to be some basic data descriptions and analysis before we do any forecasting.
@@ -30,4 +32,10 @@ tax_ts <- tax_data |> mutate(date=mdy(date)) |> mutate(date = yearmonth(date)) |
 cpi_ts <- cpi_data |> mutate(date=mdy(date)) |> mutate(date = yearmonth(date)) |> as_tsibble(index=date)
 taxcpi_ts <- inner_join(tax_ts,cpi_ts,by=c("date"))
 ```
+
+```{r decomposition sales tax}
+x11_dcmp <- taxcpi_ts |> model(salestax_x11 = X_13ARIMA_SEATS(salestax ~ x11())) |> components()
+autoplot(x11_dcmp)
+```
+
 
