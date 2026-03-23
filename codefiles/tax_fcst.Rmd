@@ -34,8 +34,16 @@ taxcpi_ts <- inner_join(tax_ts,cpi_ts,by=c("date"))
 ```
 
 ```{r decomposition sales tax}
-x11_dcmp <- taxcpi_ts |> model(salestax_x11 = X_13ARIMA_SEATS(salestax ~ x11())) |> components()
-autoplot(x11_dcmp)
+x11_dcmp_sales <- taxcpi_ts |> model(salestax_x11 = X_13ARIMA_SEATS(salestax ~ x11())) |> components()
+autoplot(x11_dcmp_sales)
 ```
+
+
+```{r stl decomp}
+stl_dcmp_sales <- taxcpi_ts |> model(salestax_stl = STL(salestax)) |> components()
+autoplot(stl_dcmp_sales)
+```
+
+Not happy here that the remainder peices seems to get bigger over time but that also seems to coincide with growth in the oil economy?
 
 
