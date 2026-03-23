@@ -38,7 +38,15 @@ x11_dcmp_sales <- taxcpi_ts |> model(salestax_x11 = X_13ARIMA_SEATS(salestax ~ x
 autoplot(x11_dcmp_sales)
 ```
 
-```{r decomposition sales tax}
+```{r decomposition total tax}
 x11_dcmp_total <- taxcpi_ts |> model(totaltax_x11 = X_13ARIMA_SEATS(totaltax ~ x11())) |> components()
 autoplot(x11_dcmp_total)
 ```
+
+```{r unit root test}
+taxcpi_ts |> features(salestax,unitroot_kpss)
+x11_dcmp_sales |> features(trend,unitroot_kpss)
+```
+
+
+
